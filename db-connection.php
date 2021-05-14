@@ -11,10 +11,4 @@
   if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
   }
-  // echo "Connected successfully";
-
-  $sql = "SELECT * FROM user";
-  $result = $conn->query($sql);
-  $row = $result->fetch_assoc();
-  var_dump($row);
 ?>
