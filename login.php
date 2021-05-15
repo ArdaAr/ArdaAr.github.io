@@ -1,7 +1,6 @@
 <?php
 session_start();
 require "db-connection.php";
-
 if (isset($_COOKIE["uid"]) && isset($_COOKIE["unm"])){
   // select username from db
   $id = $_COOKIE["uid"];
@@ -13,11 +12,9 @@ if (isset($_COOKIE["uid"]) && isset($_COOKIE["unm"])){
     $_SESSION["data"] = $row;
   }
 }
-
 if(isset($_SESSION["login"])){
   header('Location:index.php');
 }
-
 // login validation
 if (isset($_POST["login"])){
   // cek apakah username kosong
@@ -39,7 +36,6 @@ if (isset($_POST["login"])){
           setcookie('uid', $data['id_user'], time()+60);
           setcookie('unm', hash('md5', $data['username']), time()+60);
         }
-
         header('Location:index.php');
         exit;
       }else{
@@ -50,12 +46,10 @@ if (isset($_POST["login"])){
     }
   }
 }
-
 // function to show alert error
 function showAlert($message){
   echo '<div class="alert alert-success" role="alert">'.$message.'</div>';
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -66,10 +60,10 @@ function showAlert($message){
   </head>
   <body class="p-5" style="background-image: url('https://images.unsplash.com/photo-1557683316-973673baf926?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1915&q=80');height: 100vh;">
     <div class="container-md text-center">
-      <img src="logo.png" style="width:100px;" alt="logo app">
+      <img src="icon/logo.png" style="width:100px;" alt="logo app">
       <div class="d-flex justify-content-center flex-row bd-highlight mb-2 mt-2 text-dark">
         <div class="w-25 bg-light p-3 shadow rounded-2">
-          <img src="profile.png" style="width:80px;" alt="user icon">
+          <img src="icon/profile.png" style="width:80px;" alt="user icon">
           <h3>User Login</h3>
           <form class="text-start" action="" method="post">
             <?php
